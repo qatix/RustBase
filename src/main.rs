@@ -1,12 +1,14 @@
+use std::io::{BufWriter, stdout};
+
 use ferris_says::say;
-use std::io::{stdout,BufWriter};
+
+use myclass::MyClass;
+use myvector::vector_test;
+use rust_base::english::farewells::farewells::goodbye;
+extern crate rust_base;
 
 mod myclass;
-use myclass::MyClass;
-
 mod myvector;
-use myvector::{vector_test};
-
 mod mymap;
 
 mod mydatatype;
@@ -15,37 +17,77 @@ mod myloop;
 mod mystring;
 mod mybase;
 mod mycond;
+mod mystruct;
+mod myslice;
+mod myenum;
+mod mymod;
+mod mygeneric;
+mod mytrait;
+mod myio;
+mod myerror;
+mod mythread;
 
-fn say_test(){
-   let stdout = stdout();
-   let message = String::from("hello fellow Rustaceans!");
-   let width = message.chars().count();
+fn say_test() {
+    let stdout = stdout();
+    let message = String::from("hello fellow Rustaceans!");
+    let width = message.chars().count();
 
-   let mut writer = BufWriter::new(stdout.lock());
-   say(message.as_bytes(),width,&mut writer).unwrap();
+    let mut writer = BufWriter::new(stdout.lock());
+    say(message.as_bytes(), width, &mut writer).unwrap();
 }
 
 fn main() {
-    println!("Hello, world!");
+    println!("Hello, rust!");
 
-   let object = MyClass::new(String::from("rust"),111);
-   object.public_method();
+    let args = std::env::args();
+    println!("{:?}", args);
 
-   vector_test();
+    for arg in args {
+        println!("arg:{}", arg);
+    }
 
-   mymap::map_test();
+    // let object = MyClass::new(String::from("rust"),111);
+    // object.public_method();
 
-   mydatatype::dt_test();
+    // vector_test();
+    //
+    // mymap::map_test();
+    //
+    // mydatatype::dt_test();
+    //
+    // myfunc::func_test();
+    //
+    // myloop::loop_test();
+    //
+    // mystring::str_test();
+    //
+    // mybase::base_test();
+    //
+    // mycond::condition_test();
+    //
+    // say_test();
 
-   myfunc::func_test();
+    // mystruct::struct_test();
 
-   myloop::loop_test();
+    // myenum::enum_test();
 
-   mystring::str_test();
+    // mymod::mod_test();
 
-   mybase::base_test();
+    // mygeneric::generic_test();
 
-   mycond::condition_test();
+    // mytrait::trait_test();
 
-   say_test();
+    // myio::read_file();
+    // myio::write_file();
+
+    // myerror::error_test();
+
+    // mythread::thread_test();
+
+    // myslice::slice_test();
+
+    let gbye = goodbye();
+    println!("bye:{}", gbye);
+    println!("ll:{}",rust_base::english::greetings::hello());
+    rust_base::nation::govern();
 }

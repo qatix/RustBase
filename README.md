@@ -30,7 +30,7 @@ println!("d_arr={:?}",arr);
 https://www.runoob.com/rust/rust-ownership.html
 
 所有权有以下三条规则：
-```aidl
+```
 Rust 中的每个值都有一个变量，称为其所有者。
 一次只能有一个所有者。
 当所有者不在程序运行范围时，该值将被删除。
@@ -43,4 +43,33 @@ Rust 中的每个值都有一个变量，称为其所有者。
     // 这里是变量 s 的可用范围
 }
 // 变量范围已经结束，变量 s 无效
+```
+
+# 模块组织
+```
+mod nation {
+    mod government {
+        fn govern() {}
+    }
+    mod congress {
+        fn legislate() {}
+    }
+    mod court {
+        fn judicial() {}
+    }
+}
+```
+
+# 闭包
+```
+|参数1, 参数2, ...| -> 返回值类型 {
+    // 函数体
+}
+
+fn main() {
+    let inc = |num: i32| -> i32 {
+        num + 1
+    };
+    println!("inc(5) = {}", inc(5));
+}
 ```
